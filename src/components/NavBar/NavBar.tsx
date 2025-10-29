@@ -11,7 +11,7 @@ export default function Navbar() {
      py-8 px-8 w-full fixed top-0 left-0 z-50 flex items-center justify-between shadow-[0_4px_15px_rgba(0,0,0,0.4)] transition-all duration-500">
 
       {/* Logo */}
-      <h1 className="font-Blastimo text-4xl tracking-widest font-bold">
+      <h1 className="font-Vogue  text-4xl tracking-widest ">
         LA SUITE
         <div className="text-sm">
           <h2>by Night Fall</h2>

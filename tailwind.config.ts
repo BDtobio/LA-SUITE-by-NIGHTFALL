@@ -10,13 +10,9 @@ export default {
     extend: {
       
       fontFamily: {
-        muro: ["Muro"],
-        Blastimo:["Blastimo"],
-        heading15medium: ["Heading15Medium"],
-        headingMedium: ["HeadingMedium"],
-        Hamston:["Hamston"], 
-      nougat:["Nougat"],
-        nickson: ["Nickson"],
+       Magofah: ["Magofah"],
+        Vogue:["Vogue"],
+        
       },
       
       colors: {
