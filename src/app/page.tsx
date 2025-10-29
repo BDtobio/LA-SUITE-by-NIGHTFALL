@@ -21,8 +21,8 @@ export default function Landing() {
 
   return (
     <div className={`flex flex-col justify-center items-center h-screen bg-black text-white transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>     
-      <h1 className="font-Hamston text-[7rem] leading-none mb-8">
-        NIGHTFALL
+      <h1 className="font-Blastimo text-[7rem] leading-none mb-8">
+        LA SUITE by Night Fall
       </h1>
      
 
