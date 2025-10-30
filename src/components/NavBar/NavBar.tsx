@@ -1,64 +1,60 @@
 "use client";
-import { useState } from "react";
-import { Menu, X } from "lucide-react"; 
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="bg-black text-white
-     py-8 px-8 w-full fixed top-0 left-0 z-50 flex items-center justify-between shadow-[0_4px_15px_rgba(0,0,0,0.4)] transition-all duration-500">
-
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 sm:px-12 py-6
+      transition-all duration-500 backdrop-blur-md
+      ${scrolled ? "bg-black/90 shadow-[0_4px_20px_rgba(0,0,0,0.6)]" : "bg-black/40"}`}
+    >
       {/* Logo */}
-      <h1 className="font-Vogue  text-4xl tracking-widest ">
-        LA SUITE
-        <div className="text-sm">
-          <h2>by Night Fall</h2>
-        </div>
-       </h1>
-      
+      <div className="relative group">
+        <h1 className="font-Vogue text-3xl sm:text-4xl tracking-widest text-white drop-shadow-lg">
+          LA SUITE
+          <div className="text-sm font-light tracking-widest opacity-80">
+            by Night Fall
+          </div>
+        </h1>
+        {/* Glow sutil debajo del logo */}
+        <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-white/20 blur-md group-hover:bg-white/40 transition-all duration-300"></div>
+      </div>
 
-      {/* Links desktop */}
+      {/* Links Desktop */}
       <ul className="hidden md:flex space-x-10 text-lg font-medium tracking-wide">
-        <li>
-          <Link href="/home" className="relative group">
-            <span className="group-hover:text-gray-200 transition-colors">Inicio</span>
-            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/events" className="relative group">
-            <span className="group-hover:text-gray-200 transition-colors">Eventos</span>
-            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
-          </Link>
-        </li>
-        {/* <li>
-          <Link href="/aboutUs" className="relative group">
-            <span className="group-hover:text-gray-200 transition-colors">Club</span>
-            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
-          </Link>
-        </li> */}
-        <li>
-          <Link href="/contact" className="relative group">
-            <span className="group-hover:text-gray-200 transition-colors">Contacto</span>
-            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
-          </Link>
-        {/* </li>
-        <li>
-         <Link
-  href="/tickets"
-  className="border-2 border-white text-white py-2.5 px-7 rounded-full font-semibold
-             hover:bg-white hover:text-[#5a46b9] transition-all duration-300"
->
-  Tickets
-</Link> */}
-
-        </li>
+        {[
+          { href: "/home", label: "Inicio" },
+          { href: "/events", label: "Eventos" },
+          { href: "/contact", label: "Contacto" },
+        ].map((link, index) => (
+          <li key={index}>
+            <Link href={link.href} className="relative group">
+              <span className="group-hover:text-gray-200 transition-colors">
+                {link.label}
+              </span>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300 rounded-full"></span>
+            </Link>
+          </li>
+        ))}
       </ul>
 
-      {/* Icono de menú móvil */}
+      {/* Botón menú móvil */}
       <button
+
         className="flex md:hidden text-white"
         onClick={() => setMenuOpen(!menuOpen)}
       >
@@ -66,27 +62,26 @@ export default function Navbar() {
       </button>
 
       {/* Menú móvil */}
-      {menuOpen && (
-        <ul className="md:hidden bg-black text-white absolute top-full left-0 w-full flex flex-col items-center space-y-6 py-10 z-50 shadow-[0_4px_15px_rgba(0,0,0,0.4)] animate-fadeIn">
-          {[
-            { href: "/home", label: "Inicio" },
-            { href: "/events", label: "Eventos" },
-            { href: "/contact", label: "Contacto" },
-            // { href: "/aboutUs", label: "Nosotros" },
-            // { href: "/tickets", label: "Tickets" },
-          ].map((link, index) => (
-            <li key={index}>
-              <Link
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-lg font-semibold hover:text-gray-200 transition-colors"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div
+        className={`absolute top-full left-0 w-full bg-black/90  backdrop-blur-lg text-white flex flex-col items-center 
+        space-y-8 py-10 z-40 shadow-[0_4px_20px_rgba(0,0,0,0.6)] transition-all duration-500 ease-in-out
+        ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10 pointer-events-none"}`}
+      >
+        {[
+          { href: "/home", label: "Inicio" },
+          { href: "/events", label: "Eventos" },
+          { href: "/contact", label: "Contacto" },
+        ].map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            onClick={() => setMenuOpen(false)}
+            className="text-lg font-semibold hover:text-gray-200 transition-all"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 }
