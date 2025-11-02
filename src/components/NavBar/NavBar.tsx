@@ -24,12 +24,14 @@ export default function Navbar() {
     >
       {/* Logo */}
       <div className="relative group">
+        <Link href="/home" className="flex items-center">
         <h1 className="font-Vogue text-3xl sm:text-4xl tracking-widest text-white drop-shadow-lg">
           LA SUITE
           <div className="text-sm font-light tracking-widest opacity-80">
             by Night Fall
           </div>
         </h1>
+        </Link>
         {/* Glow sutil debajo del logo */}
         <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-white/20 blur-md group-hover:bg-white/40 transition-all duration-300"></div>
       </div>

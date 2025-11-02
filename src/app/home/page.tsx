@@ -1,19 +1,30 @@
-
 'use client'
 
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { Mail, MessageCircle } from 'lucide-react'
 
 export default function Home() {
-  return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-2 py-16 bg-black text-white">
-      {/* Hero */}
-      <div className="relative text-center w-full max-w-3xl px-2 sm:px-4">
-        {/* Fondo overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/30 rounded-xl shadow-xl"></div>
 
-        <div className="relative mt-[8rem] z-10 flex flex-col items-center">
+ const [showText, setShowText] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowText(prev => !prev)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <main className="h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden">
+      {/* Hero */}
+      <div className="relative text-center w-full max-w-2xl px-4">
+        {/* Fondo overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black/30"></div>
+
+        <div className="relative z-10 flex flex-col items-center justify-center h-full">
           {/* Contenedor del logo e imagen alterna */}
-          <div className="relative w-[300px] h-[280px] sm:w-[400px] sm:h-[370px] md:w-[470px] md:h-[440px] group">
+          <div className="relative w-[350px] h-[370px] sm:w-[380px] sm:h-[380px] md:w-[470px] md:h-[440px] group transition-transform duration-300 hover:scale-105">
             {/* Logo */}
             <Image
               src="/images/logoblancosinf.png"
@@ -31,21 +42,47 @@ export default function Home() {
             />
           </div>
 
-          {/* Botones */}
-          <div className="mt-[8rem] flex flex-col sm:flex-row justify-center gap-6 sm:gap-6 font-Blastimo w-full px-6 sm:px-0">
-            <a
-              href="/contact"
-              className="px-6 py-3 sm:px-8 border border-white bg-white/10 hover:bg-white hover:text-black transition transform hover:scale-105 font-bold rounded-sm shadow-md text-lg sm:text-base"
-            >
-              Contacto
-            </a>
+       
+          {/* Botones animados */}
+          <div className="mt-16 flex flex-col sm:flex-row justify-center gap-6 w-full px-6 sm:px-8 font-Blastimo text-black">
+
+            {/* Botón Contacto */}
+           <a
+  href="/contact"
+  className="relative flex items-center justify-center gap-2 px-6 py-6 sm:px-8 border border-white bg-white hover:bg-black hover:text-white transition-all duration-500 hover:scale-105 font-Magofah rounded-sm shadow-md text-xl sm:text-lg overflow-hidden"
+>
+  <span className={`absolute transition-opacity duration-700 ${showText ? 'opacity-100' : 'opacity-0'}`}>
+    Contacto
+  </span>
+  <Mail
+    size={29}
+    color="#E50914"
+    className={`absolute transition-opacity duration-700 ${showText ? 'opacity-0' : 'opacity-100'}`}
+  />
+</a>
+
+
+            {/* Botón WhatsApp */}
             <a
               href="https://wa.me/34635777116?text=Hola%20Matías,%20quiero%20consultar%20sobre%20LA%20SUIT"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 sm:px-8 border border-white bg-white/10 hover:bg-white hover:text-black transition transform hover:scale-105 font-bold rounded-sm shadow-md text-lg sm:text-base"
+              className="relative flex items-center justify-center gap-2 px-6 py-6 sm:px-8 border border-white bg-white hover:bg-black hover:text-white transition-all duration-500 hover:scale-105 font-Magofah rounded-sm shadow-md text-xl sm:text-lg overflow-hidden"
             >
-              WhatsApp
+              <span
+                className={`absolute transition-opacity duration-700 ${
+                  showText ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                WhatsApp
+              </span>
+              <MessageCircle
+                size={29}
+                color="#25D366"
+                className={`absolute transition-opacity duration-700 ${
+                  showText ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
             </a>
           </div>
         </div>
