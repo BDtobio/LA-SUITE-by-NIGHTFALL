@@ -43,48 +43,64 @@ export default function Home() {
           </div>
 
        
-          {/* Botones animados */}
-          <div className="mt-16 flex flex-col sm:flex-row justify-center gap-6 w-full px-6 sm:px-8 font-Blastimo text-black">
+         
+    {/* Botones de contacto */}
+<div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-2xl text-black mt-16">
+  
+  {/* Botón Contacto */}
+  <a
+    href="/contact"
+    className="relative flex items-center justify-center 
+    w-64 sm:w-72 lg:w-80
+    px-6 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6
+    border border-white bg-white hover:bg-black hover:text-white 
+    transition-all duration-500 hover:scale-105 font-Magofah 
+    rounded-md shadow-md text-lg sm:text-xl lg:text-2xl overflow-hidden"
+  >
+    <span
+      className={`absolute transition-opacity duration-700 ${
+        showText ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      Contacto
+    </span>
+    <Mail
+      size={30}
+      color="#E50914"
+      className={`absolute transition-opacity duration-700 ${
+        showText ? 'opacity-0' : 'opacity-100'
+      }`}
+    />
+  </a>
 
-            {/* Botón Contacto */}
-           <a
-  href="/contact"
-  className="relative flex items-center justify-center gap-2 px-6 py-6 sm:px-8 border border-white bg-white hover:bg-black hover:text-white transition-all duration-500 hover:scale-105 font-Magofah rounded-sm shadow-md text-xl sm:text-lg overflow-hidden"
->
-  <span className={`absolute transition-opacity duration-700 ${showText ? 'opacity-100' : 'opacity-0'}`}>
-    Contacto
-  </span>
-  <Mail
-    size={29}
-    color="#E50914"
-    className={`absolute transition-opacity duration-700 ${showText ? 'opacity-0' : 'opacity-100'}`}
-  />
-</a>
-
-
-            {/* Botón WhatsApp */}
-            <a
-              href="https://wa.me/34635777116?text=Hola%20Matías,%20quiero%20consultar%20sobre%20LA%20SUIT"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative flex items-center justify-center gap-2 px-6 py-6 sm:px-8 border border-white bg-white hover:bg-black hover:text-white transition-all duration-500 hover:scale-105 font-Magofah rounded-sm shadow-md text-xl sm:text-lg overflow-hidden"
-            >
-              <span
-                className={`absolute transition-opacity duration-700 ${
-                  showText ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                WhatsApp
-              </span>
-              <MessageCircle
-                size={29}
-                color="#25D366"
-                className={`absolute transition-opacity duration-700 ${
-                  showText ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
-            </a>
-          </div>
+  {/* Botón WhatsApp */}
+  <a
+    href="https://wa.me/34635777116?text=Hola%20Matías,%20quiero%20consultar%20sobre%20LA%20SUIT"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative flex items-center justify-center 
+    w-64 sm:w-72 lg:w-80
+    px-6 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6
+    border border-white bg-white hover:bg-black hover:text-white 
+    transition-all duration-500 hover:scale-105 font-Magofah 
+    rounded-md shadow-md text-lg sm:text-xl lg:text-2xl overflow-hidden"
+  >
+    <span
+      className={`absolute transition-opacity duration-700 ${
+        showText ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      WhatsApp
+    </span>
+    <MessageCircle
+      size={30}
+      color="#25D366"
+      className={`absolute transition-opacity duration-700 ${
+        showText ? 'opacity-0' : 'opacity-100'
+      }`}
+    />
+  </a>
+</div>
         </div>
       </div>
     </main>

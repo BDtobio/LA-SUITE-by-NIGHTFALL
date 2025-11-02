@@ -1,4 +1,4 @@
-import { FaWhatsapp, FaInstagram, FaTiktok, FaEnvelope } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -12,9 +12,9 @@ const Footer = () => {
         <a href="https://www.instagram.com/nightfallgroup_/" className="mx-4 text-2xl hover:text-pink-600 transition-all">
           <FaInstagram />
         </a>
-        <a href="https://www.tiktok.com/@yourusername" className="mx-4 text-2xl hover:text-purple-600 transition-all">
+        {/* <a href="https://www.tiktok.com/@yourusername" className="mx-4 text-2xl hover:text-purple-600 transition-all">
           <FaTiktok />
-        </a>
+        </a> */}
         <a href="mailto:your@email.com" className="mx-4 text-2xl hover:text-blue-500 transition-all">
           <FaEnvelope />
         </a>

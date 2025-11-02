@@ -51,7 +51,7 @@ const Contacto = () => {
 
   return (
     <section className="bg-black text-white py-24 px-6 md:px-12 mt-24 relative overflow-hidden">
-      {/* 🔹 Efecto de fondo suave con gradiente */}
+      
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black opacity-90 pointer-events-none"></div>
 
       <div className="max-w-3xl mx-auto relative z-10">
